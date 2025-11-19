@@ -3,7 +3,7 @@ CC = cc
 CFLAGS = -std=c99 -Wall -Wextra -Werror -MMD
 ASSEMBLER_FLAGS = -f elf64
 INCLUDE = -I lib/criterion/include
-LFLAGS = -lcriterion -L:lib/criterion/lib/libcriterion.so
+LFLAGS = -lcriterion -L lib/criterion/lib -Wl,-rpath=lib/criterion/lib
 
 SOURCE_BUILD_DIR = build/src
 TEST_BUILD_DIR = build/test
@@ -30,6 +30,8 @@ clean:
 	$(RM) $(wildcard $(TEST_BUILD_DIR)/*)
 	$(RM) $(TEST_TARGET_BIN)
 
+docker-img:
+	docker build -t leetcode-x86_64-asm .
 
 release: CFLAGS += -DNODEBUG
 release: LFLAGS += -O3 -s
