@@ -6,5 +6,8 @@ on:
 jobs:
   run-tests:
     runs-on: ubuntu-24.04
+    defaults:
+      run:
+        working-directory: ./
     steps:
-      - run: make
+      - run: make test
