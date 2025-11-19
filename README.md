@@ -1,5 +1,5 @@
 # Leetcode x86_64 ASM
-Solving selected LeetCode problems in x86_64 assembly.   
+Solving LeetCode-style problems in x86_64 assembly.   
 This uses the [Criterion](https://github.com/Snaipe/Criterion) unit testing framework.
 
 #### How to run
