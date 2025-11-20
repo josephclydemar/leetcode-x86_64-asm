@@ -26,9 +26,9 @@ test: $(TEST_TARGET_BIN)
 	@$(TEST_TARGET_BIN)
 
 clean:
-	$(RM) $(wildcard $(SOURCE_BUILD_DIR)/*)
-	$(RM) $(wildcard $(TEST_BUILD_DIR)/*)
-	$(RM) $(TEST_TARGET_BIN)
+	@$(RM) $(wildcard $(SOURCE_BUILD_DIR)/*)
+	@$(RM) $(wildcard $(TEST_BUILD_DIR)/*)
+	@$(RM) $(TEST_TARGET_BIN)
 
 docker-img:
 	docker build -t leetcode-x86_64-asm .

@@ -3,6 +3,9 @@
 
 extern int64_t safe_factorial(int64_t n);
 
+/**
+ * (n >= 0 || n <= 20) -> n! : 0
+ */
 Test(leetcode_x86_64_asm, safe_factorial) {
   cr_expect(safe_factorial(-5) == 0);
   cr_expect(safe_factorial(-1) == 0);
