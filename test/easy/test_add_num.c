@@ -3,7 +3,7 @@
 
 extern int64_t add_two_num(int64_t a, int64_t b);
 
-Test(leetcode_x86_64_asm, add_two_num) {
+Test(easy, add_two_num) {
   cr_expect(add_two_num(0, 5) == 5);
   cr_expect(add_two_num(1, 6) == 7);
   cr_expect(add_two_num(2, 7) == 9);

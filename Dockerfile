@@ -9,4 +9,4 @@ COPY . /app
 
 RUN make
 
-CMD [ "make", "test" ]
+CMD [ "make", "test-verbose" ]

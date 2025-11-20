@@ -8,14 +8,15 @@ LFLAGS = -lcriterion -L lib/criterion/lib -Wl,-rpath=lib/criterion/lib
 SOURCE_BUILD_DIR = build/src
 TEST_BUILD_DIR = build/test
 
-SOURCE_FILES = $(wildcard src/*.s)
-TEST_FILES = $(wildcard test/*.c)
+SOURCE_FILES = $(wildcard src/**/*.s)
+TEST_FILES = $(wildcard test/**/*.c)
 
-SOURCE_OBJECT_FILES = $(patsubst src/%.s,$(SOURCE_BUILD_DIR)/%.o,$(SOURCE_FILES))
-TEST_OBJECT_FILES = $(patsubst test/%.c,$(TEST_BUILD_DIR)/%.o,$(TEST_FILES))
+SOURCE_OBJECT_FILES = $(patsubst src/%.s, $(SOURCE_BUILD_DIR)/%.o, $(SOURCE_FILES))
+TEST_OBJECT_FILES = $(patsubst test/%.c, $(TEST_BUILD_DIR)/%.o, $(TEST_FILES))
 DEPS_FILES = $(SOURCE_OBJECT_FILES:.o=.d)
 
 TEST_TARGET_BIN = build/test.elf
+DOCKER_IMG = leetcode-x86_64-asm
 
 
 .PHONY: all test clean
@@ -25,13 +26,27 @@ all: debug
 test: $(TEST_TARGET_BIN)
 	@$(TEST_TARGET_BIN)
 
+test-verbose: $(TEST_TARGET_BIN)
+	@$(TEST_TARGET_BIN) --verbose=0
+
 clean:
-	@$(RM) $(wildcard $(SOURCE_BUILD_DIR)/*)
-	@$(RM) $(wildcard $(TEST_BUILD_DIR)/*)
+	@$(RM) $(wildcard $(SOURCE_BUILD_DIR)/**/*)
+	@$(RM) $(wildcard $(TEST_BUILD_DIR)/**/*)
 	@$(RM) $(TEST_TARGET_BIN)
 
-docker-img:
-	docker build -t leetcode-x86_64-asm .
+show:
+	@echo "SOURCE_FILES: $(SOURCE_FILES)"
+	@echo "TEST_FILES: $(TEST_FILES)"
+	@echo "SOURCE_OBJECT_FILES: $(SOURCE_OBJECT_FILES)"
+	@echo "TEST_OBJECT_FILES: $(TEST_OBJECT_FILES)"
+	@echo "DEPS_FILES: $(DEPS_FILES)"
+
+docker-build:
+	@sudo docker build -t $(DOCKER_IMG) .
+
+docker-run:
+	@sudo docker run $(DOCKER_IMG)
+
 
 release: CFLAGS += -DNODEBUG
 release: LFLAGS += -O3 -s
