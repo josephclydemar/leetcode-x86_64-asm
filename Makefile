@@ -34,13 +34,6 @@ clean:
 	@$(RM) $(wildcard $(TEST_BUILD_DIR)/**/*)
 	@$(RM) $(TEST_TARGET_BIN)
 
-show:
-	@echo "SOURCE_FILES: $(SOURCE_FILES)"
-	@echo "TEST_FILES: $(TEST_FILES)"
-	@echo "SOURCE_OBJECT_FILES: $(SOURCE_OBJECT_FILES)"
-	@echo "TEST_OBJECT_FILES: $(TEST_OBJECT_FILES)"
-	@echo "DEPS_FILES: $(DEPS_FILES)"
-
 docker-build:
 	@sudo docker build -t $(DOCKER_IMG) .
 
