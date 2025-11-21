@@ -57,5 +57,3 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
-# Generated documentation
-docs/
