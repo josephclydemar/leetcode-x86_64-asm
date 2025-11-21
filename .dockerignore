@@ -1,5 +1,6 @@
 .github
 *.md
 *.d
-*.elf
 *.o
+*.elf
+*.out
