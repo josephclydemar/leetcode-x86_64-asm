@@ -5,21 +5,21 @@ global safe_factorial
 
 safe_factorial:
   mov rax, 0x0
-  mov r8, rdi
-  mov r9, r8
-  cmp r8, 0x0
+  mov rcx, rdi
+  mov r8, rcx
+  cmp rcx, 0x0
   jl return_to_caller
-  cmp r8, 0x1
+  cmp rcx, 0x1
   jle set_return_value
-  cmp r8, 0x14
+  cmp rcx, 0x14
   jg return_to_caller
-  sub r8, 0x1
+  dec rcx
 loop:
-  imul r9, r8
-  sub r8, 0x1
-  cmp r8, 0x0
+  imul r8, rcx
+  dec rcx
+  cmp rcx, 0x0
   jg loop
-  mov rax, r9
+  mov rax, r8
 return_to_caller:
   ret
 
