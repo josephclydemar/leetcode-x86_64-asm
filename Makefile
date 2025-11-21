@@ -38,7 +38,7 @@ docker-build:
 	@sudo docker build -t $(DOCKER_IMG) .
 
 docker-run:
-	@sudo docker run $(DOCKER_IMG)
+	@sudo docker run --rm $(DOCKER_IMG)
 
 
 release: CFLAGS += -DNODEBUG
