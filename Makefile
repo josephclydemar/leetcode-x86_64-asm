@@ -21,7 +21,7 @@ DEPS_FILES = $(SOURCE_OBJECT_FILES:.o=.d)
 
 MAIN_TARGET_BIN = build/main.out
 TEST_TARGET_BIN = build/test.out
-DOCKER_IMG = leetcode-x86_64-asm
+DOCKER_IMG = leetcode-x86_64-asm:1
 
 
 .PHONY: all test test-verbose clean docker-build docker-run main
@@ -47,7 +47,7 @@ docker-build:
 	@sudo docker build -t $(DOCKER_IMG) .
 
 docker-run:
-	@sudo docker run --rm $(DOCKER_IMG)
+	@sudo docker run -it --rm $(DOCKER_IMG)
 
 main: $(MAIN_TARGET_BIN)
 
