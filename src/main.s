@@ -7,9 +7,9 @@
 .equ STDOUT, 1
 .equ STDERR, 2
 
-.macro exit error_code
+.macro exit exit_code
   mov rax, SYS_EXIT
-  mov rdi, \error_code
+  mov rdi, \exit_code
   syscall
 .endm
 
