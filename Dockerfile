@@ -1,7 +1,7 @@
 FROM ubuntu:latest
 
 RUN apt update && \
-  apt install -y nasm build-essential && \
+  apt install -y build-essential && \
   apt clean && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
