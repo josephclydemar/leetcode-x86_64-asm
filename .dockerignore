@@ -1,6 +1,8 @@
 .github
+.cache
 *.md
 *.d
 *.o
-*.elf
 *.out
+*.elf
+*.json
