@@ -1,7 +1,7 @@
-ASSEMBLER = nasm
+ASSEMBLER = as
 CC = cc
 LINKER = ld
-ASSEMBLER_FLAGS = -f elf64
+ASSEMBLER_FLAGS = --64
 LINKER_FLAGS =
 CFLAGS = -std=c99 -Wall -Wextra -Werror -MMD
 INCLUDE = -I lib/criterion/include
@@ -56,7 +56,7 @@ release: LFLAGS += -O3 -s
 release: LINKER_FLAGS += -s
 release: $(MAIN_TARGET_BIN) $(TEST_TARGET_BIN)
 
-debug: ASSEMBLER_FLAGS += -g -F stabs
+debug: ASSEMBLER_FLAGS += -gstabs
 debug: LFLAGS += -O0
 debug: $(MAIN_TARGET_BIN) $(TEST_TARGET_BIN)
 

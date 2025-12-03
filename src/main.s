@@ -50,8 +50,6 @@
   call longest_unique_substring
 %endmacro
 
-section .note.GNU-stack
-
 section .data
 two_sum_num_arr: dq 2, 7, 11, 15
 two_sum_num_arr_len: dq 4
