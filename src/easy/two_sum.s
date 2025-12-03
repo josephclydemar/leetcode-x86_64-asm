@@ -1,15 +1,13 @@
-.intel_syntax noprefix
-.section .note.GNU-stack
+section .note.GNU-stack
+section .text
+global two_sum
 
-.section .text
-.global two_sum
-
-# nums_arr:         rdi
-# nums_arr_size:    rsi
-# target:           rdx
+; nums_arr:         rdi
+; nums_arr_size:    rsi
+; target:           rdx
 two_sum:
-  mov r8, 0   # idx1 (uint64_t)
-  mov r9, 1   # idx2 (uint64_t)
+  mov r8, 0   ; idx1 (uint64_t)
+  mov r9, 1   ; idx2 (uint64_t)
   mov rcx, 0
   jmp loop_r9
 

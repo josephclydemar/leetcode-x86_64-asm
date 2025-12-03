@@ -1,8 +1,6 @@
-.intel_syntax noprefix
-.section .note.GNU-stack
-
-.section .text
-.global sum_of_squares
+section .note.GNU-stack
+section .text
+global sum_of_squares
 
 sum_of_squares:
   mov rax, 0

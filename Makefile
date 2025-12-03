@@ -1,7 +1,7 @@
-ASSEMBLER = as
+ASSEMBLER = nasm
 CC = cc
 LINKER = ld
-ASSEMBLER_FLAGS = --64
+ASSEMBLER_FLAGS = -f elf64
 LINKER_FLAGS =
 CFLAGS = -std=c99 -Wall -Wextra -Werror -MMD
 INCLUDE = -I lib/criterion/include
@@ -21,7 +21,7 @@ DEPS_FILES = $(SOURCE_OBJECT_FILES:.o=.d)
 
 MAIN_TARGET_BIN = build/main.out
 TEST_TARGET_BIN = build/test.out
-DOCKER_IMG = leetcode-x86_64-asm
+DOCKER_IMG = leetcode-x86_64-asm:1
 
 
 .PHONY: all test test-verbose clean docker-build docker-run main
@@ -47,7 +47,7 @@ docker-build:
 	@sudo docker build -t $(DOCKER_IMG) .
 
 docker-run:
-	@sudo docker run --rm $(DOCKER_IMG)
+	@sudo docker run -it --rm $(DOCKER_IMG)
 
 main: $(MAIN_TARGET_BIN)
 
@@ -56,7 +56,7 @@ release: LFLAGS += -O3 -s
 release: LINKER_FLAGS += -s
 release: $(MAIN_TARGET_BIN) $(TEST_TARGET_BIN)
 
-debug: ASSEMBLER_FLAGS += -gstabs
+debug: ASSEMBLER_FLAGS += -g -F stabs
 debug: LFLAGS += -O0
 debug: $(MAIN_TARGET_BIN) $(TEST_TARGET_BIN)
 

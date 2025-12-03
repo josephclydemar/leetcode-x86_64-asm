@@ -1,8 +1,6 @@
-.intel_syntax noprefix
-.section .note.GNU-stack
-
-.section .text
-.global safe_factorial
+section .note.GNU-stack
+section .text
+global safe_factorial
 
 safe_factorial:
   mov rax, 0
